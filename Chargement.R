@@ -38,7 +38,6 @@ SNP_Pass$F7_CCGTCC.GT <- as.factor(SNP_Pass$F7_CCGTCC.GT)
 SNP_Pass <- cbind(SNP_Pass[,c(1:8)],SNP_Pass[,c(13:20)], SNP_Pass[,c(25:28)],
       SNP_Pass[,c(9:12)], SNP_Pass[,c(21:24)], SNP_Pass[,c(29:36)])
 
-<<<<<<< HEAD
 # Recodage PID ------------------------------------------------------------
 
 SNP_Pass$F5_GTTTCG.PID[which(is.na(SNP_Pass$F5_GTTTCG.PID))] <- rep(F,491)
@@ -76,8 +75,6 @@ levels(SNP_Pass$F13_GATCAG.PID) <- c(rep(T,26),F)
 
 # Recodage modalités ------------------------------------------------------
 
-paste(substr(levels(SNP_Pass$F5_GTTTCG.GT), 1,1), "/", substr(levels(SNP_Pass$F5_GTTTCG.GT), 3,3), sep = "")
-
 levels(SNP_Pass$F5_GTTTCG.GT) <- paste(substr(levels(SNP_Pass$F5_GTTTCG.GT), 1,1),
                                        "/",
                                        substr(levels(SNP_Pass$F5_GTTTCG.GT), 3,3), sep = "")
@@ -113,26 +110,51 @@ levels(SNP_Pass$F13_GATCAG.GT) <- paste(substr(levels(SNP_Pass$F13_GATCAG.GT), 1
 
 # Alt ref  ----------------------------------------------------------------
 
-substr(SNP_Pass$F10_GTGAAA.GT[1], 1,2)
-paste(substr(SNP_Pass$F10_GTGAAA.GT[1], 1,2),substr(SNP_Pass$F10_GTGAAA.GT[1], 3,3), sep = "")
+SNP_Pass <- SNP_Pass[-which(SNP_Pass$ALT %in% c("A", "C", "G", "T") == F) ,]
 
-ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F10_GTGAAA.GT, "0/0",
-       ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F10_GTGAAA.GT, "1/1",
-       ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F10_GTGAAA.GT, "0/1", 
-       ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F10_GTGAAA.GT, "1/0", "AUTRE"))))
+SNP_Pass$F10_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F10_GTGAAA.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F10_GTGAAA.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F10_GTGAAA.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F10_GTGAAA.GT, "1/0", "AUTRE")))))
 
-paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F10_GTGAAA.GT
+SNP_Pass$F11_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F11_ACAGTG.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F11_ACAGTG.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F11_ACAGTG.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F11_ACAGTG.GT, "1/0", "AUTRE")))))
 
+SNP_Pass$F13_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F13_GATCAG.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F13_GATCAG.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F13_GATCAG.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F13_GATCAG.GT, "1/0", "AUTRE")))))
 
-paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F10_GTGAAA.GT
+SNP_Pass$F9_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F9_GTGGCC.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F9_GTGGCC.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F9_GTGGCC.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F9_GTGGCC.GT, "1/0", "AUTRE")))))
 
+SNP_Pass$F8_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F8_TGACCA.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F8_TGACCA.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F8_TGACCA.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F8_TGACCA.GT, "1/0", "AUTRE")))))
+
+SNP_Pass$F7_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F7_CCGTCC.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F7_CCGTCC.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F7_CCGTCC.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F7_CCGTCC.GT, "1/0", "AUTRE")))))
+
+SNP_Pass$F6_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F6_GTCCGC.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F6_GTCCGC.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F6_GTCCGC.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F6_GTCCGC.GT, "1/0", "AUTRE")))))
+
+SNP_Pass$F5_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F5_GTTTCG.GT, "0/0",
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F5_GTTTCG.GT, "1/1",
+    ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F5_GTTTCG.GT, "0/1", 
+    ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F5_GTTTCG.GT, "1/0", "AUTRE")))))
 
 
 # Summary -----------------------------------------------------------------
 
 names(SNP_Pass)
-=======
-names(SNP_Pass) 
->>>>>>> 2b04a5eb763ad58c09283c731aa456c1d81879ae
 
 summary(SNP_Pass)
