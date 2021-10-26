@@ -5,6 +5,9 @@ library(readr)
 
 # Chargement des données --------------------------------------------------
 
+# 5 13 7 10 fat
+# 6 8  9 11 lean
+
 SNP_Pass <- read_delim("VCF/output_gGVCF_sV_VF_SNP_PASS_VariantToTable.table", 
            "\t", escape_double = FALSE, trim_ws = TRUE)
 
@@ -33,6 +36,3 @@ SNP_Pass$F7_CCGTCC.GT <- as.factor(SNP_Pass$F7_CCGTCC.GT)
 names(SNP_Pass)
 
 summary(SNP_Pass)
-
-
-
