@@ -35,7 +35,10 @@ SNP_Pass$F6_GTCCGC.GT <- as.factor(SNP_Pass$F6_GTCCGC.GT)
 SNP_Pass$F7_CCGTCC.AD <- as.factor(SNP_Pass$F7_CCGTCC.AD)
 SNP_Pass$F7_CCGTCC.GT <- as.factor(SNP_Pass$F7_CCGTCC.GT)
 
+SNP_Pass <- cbind(SNP_Pass[,c(1:8)],SNP_Pass[,c(13:20)], SNP_Pass[,c(25:28)],
+      SNP_Pass[,c(9:12)], SNP_Pass[,c(21:24)], SNP_Pass[,c(29:36)])
 
+<<<<<<< HEAD
 # Recodage PID ------------------------------------------------------------
 
 SNP_Pass$F5_GTTTCG.PID[which(is.na(SNP_Pass$F5_GTTTCG.PID))] <- rep(F,491)
@@ -128,5 +131,8 @@ paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F10_GTGAAA.GT
 # Summary -----------------------------------------------------------------
 
 names(SNP_Pass)
+=======
+names(SNP_Pass) 
+>>>>>>> 2b04a5eb763ad58c09283c731aa456c1d81879ae
 
 summary(SNP_Pass)
