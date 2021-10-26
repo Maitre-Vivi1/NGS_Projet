@@ -152,9 +152,15 @@ SNP_Pass$F5_alt_ref_gt <- as.factor(ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$REF, 
     ifelse(paste(SNP_Pass$REF,"/",SNP_Pass$ALT, sep ="") == SNP_Pass$F5_GTTTCG.GT, "0/1", 
     ifelse(paste(SNP_Pass$ALT,"/",SNP_Pass$REF, sep ="") == SNP_Pass$F5_GTTTCG.GT, "1/0", "AUTRE")))))
 
+SNP_Pass <- SNP_Pass[,c(1:8,37,9:12,39,13:16,44,17:20,42,21:24,38,25:28,43,29:32,41,33:36,40)]
 
 # Summary -----------------------------------------------------------------
 
 names(SNP_Pass)
 
 summary(SNP_Pass)
+
+
+
+
+
