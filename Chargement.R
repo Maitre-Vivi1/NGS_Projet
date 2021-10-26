@@ -32,7 +32,9 @@ SNP_Pass$F6_GTCCGC.GT <- as.factor(SNP_Pass$F6_GTCCGC.GT)
 SNP_Pass$F7_CCGTCC.AD <- as.factor(SNP_Pass$F7_CCGTCC.AD)
 SNP_Pass$F7_CCGTCC.GT <- as.factor(SNP_Pass$F7_CCGTCC.GT)
 
+SNP_Pass <- cbind(SNP_Pass[,c(1:8)],SNP_Pass[,c(13:20)], SNP_Pass[,c(25:28)],
+      SNP_Pass[,c(9:12)], SNP_Pass[,c(21:24)], SNP_Pass[,c(29:36)])
 
-names(SNP_Pass)
+names(SNP_Pass) 
 
 summary(SNP_Pass)
