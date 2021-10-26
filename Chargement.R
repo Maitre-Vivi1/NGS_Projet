@@ -9,10 +9,6 @@ SNP_Pass <- read_delim("VCF/output_gGVCF_sV_VF_SNP_PASS_VariantToTable.table",
            "\t", escape_double = FALSE, trim_ws = TRUE)
 
 
-names(SNP_Pass)
-
-summary(SNP_Pass)
-
 SNP_Pass$CHROM <- as.factor(SNP_Pass$CHROM)
 SNP_Pass$REF <- as.factor(SNP_Pass$REF)
 SNP_Pass$ALT <- as.factor(SNP_Pass$ALT)
@@ -26,7 +22,17 @@ SNP_Pass$F5_GTTTCG.AD <- as.factor(SNP_Pass$F5_GTTTCG.AD)
 SNP_Pass$F5_GTTTCG.GT <- as.factor(SNP_Pass$F5_GTTTCG.GT)
 SNP_Pass$F8_TGACCA.AD <- as.factor(SNP_Pass$F8_TGACCA.AD)
 SNP_Pass$F8_TGACCA.GT <- as.factor(SNP_Pass$F8_TGACCA.GT)
+SNP_Pass$F9_GTGGCC.AD <- as.factor(SNP_Pass$F9_GTGGCC.AD)
+SNP_Pass$F9_GTGGCC.GT <- as.factor(SNP_Pass$F9_GTGGCC.GT)
+SNP_Pass$F6_GTCCGC.AD <- as.factor(SNP_Pass$F6_GTCCGC.AD)
+SNP_Pass$F6_GTCCGC.GT <- as.factor(SNP_Pass$F6_GTCCGC.GT)
+SNP_Pass$F7_CCGTCC.AD <- as.factor(SNP_Pass$F7_CCGTCC.AD)
+SNP_Pass$F7_CCGTCC.GT <- as.factor(SNP_Pass$F7_CCGTCC.GT)
 
-=======
-ll
->>>>>>> 2af091e9103b0207c377fcacd75e1713c1a1fd48
+
+names(SNP_Pass)
+
+summary(SNP_Pass)
+
+
+
