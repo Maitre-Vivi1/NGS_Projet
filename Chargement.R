@@ -27,3 +27,6 @@ SNP_Pass$F5_GTTTCG.GT <- as.factor(SNP_Pass$F5_GTTTCG.GT)
 SNP_Pass$F8_TGACCA.AD <- as.factor(SNP_Pass$F8_TGACCA.AD)
 SNP_Pass$F8_TGACCA.GT <- as.factor(SNP_Pass$F8_TGACCA.GT)
 
+=======
+ll
+>>>>>>> 2af091e9103b0207c377fcacd75e1713c1a1fd48
