@@ -127,7 +127,7 @@ SNP_long<- data.frame(
 )
 
 
-SNP_long2 <- SNP_long[which(SNP_long$DP >= 100),]
+SNP_long2 <- SNP_long[which(SNP_long$DP >= 80),]
 
 SNP_long2 <- SNP_long2[which(SNP_long2$maigre_00_gros_01_gros11 | SNP_long2$gros_00_maigre_01_maigre11),]
 
@@ -135,9 +135,7 @@ SNP_long2 <- SNP_long2[which(SNP_long2$maigre_00_gros_01_gros11 | SNP_long2$gros
 summary(as.factor(SNP_long2$Pos))
 
 
-res_reg <- glm(data = SNP_long, Grosseur ~ GT:Phase + freq_maigre_00 + freq_maigre_01 + freq_maigre_11
-               + freq_gros_00 + freq_gros_01 + freq_gros_11 + gros_00_maigre_01_maigre11 + 
-                 maigre_00_gros_01_gros11 + alt_ref + alt_ref:Phase, binomial(link = 'logit'))
+res_reg <- glm(data = SNP_long2, Grosseur ~ Pos, binomial(link = 'logit'))
 
 summary(res_reg)
 
