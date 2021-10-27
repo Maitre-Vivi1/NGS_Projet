@@ -1,6 +1,6 @@
 # Libraries ---------------------------------------------------------------
 
-
+library(dplyr)
 # données -----------------------------------------------------------------
 
 # 5 13 7 10 fat
@@ -63,10 +63,11 @@ selection_candidats <- SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$fr
                                          (SNP_Pass$freq_maigre_00 == 1 & SNP_Pass$freq_gros_01 + SNP_Pass$freq_gros_11 ==1)),]
 
 
+head(selection_candidats)
 
+dim(selection_candidats[selection_candidats$freq_gros_01 < 0.5,])
+row.names(selection_candidats[selection_candidats$freq_maigre_01 < 0.5,])
+row.names(selection_candidats)
+selection_VEP <- c("510", "846", "964", "988", "989","1080","1114","1124","1128","1874")
 
-
-
-
-
-
+Reduce(intersect, list(row.names(selection_candidats), selection_VEP))
