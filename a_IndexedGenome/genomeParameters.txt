@@ -1,0 +1,16 @@
+### STAR   --runMode genomeGenerate   --runThreadN 16   --genomeDir ./1_MappingSTAR/a_IndexedGenome/   --genomeFastaFiles 0_Data/a_References/genomeDeReference.fa      --genomeSAindexNbases 7   --outFileNamePrefix ./1_MappingSTAR/b_LogFiles/   --sjdbGTFfile ./0_Data/a_References/annotationGenesGenomeDeRef.gtf   --sjdbOverhang 199
+### GstrandBit 32
+versionGenome	20201
+genomeFastaFiles	0_Data/a_References/genomeDeReference.fa 
+genomeSAindexNbases	7
+genomeChrBinNbits	18
+genomeSAsparseD	1
+sjdbOverhang	199
+sjdbFileChrStartEnd	- 
+sjdbGTFfile	./0_Data/a_References/annotationGenesGenomeDeRef.gtf
+sjdbGTFchrPrefix	-
+sjdbGTFfeatureExon	exon
+sjdbGTFtagExonParentTranscript	transcript_id
+sjdbGTFtagExonParentGene	gene_id
+sjdbInsertSave	Basic
+genomeFileSizes	12313182 96952593
