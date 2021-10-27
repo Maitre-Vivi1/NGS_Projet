@@ -169,3 +169,22 @@ row.names(selection_candidats)
 selection_VEP <- c("510", "846", "964", "988", "989","1080","1114","1124","1128","1874")
 
 Reduce(intersect, list(row.names(selection_candidats), selection_VEP))
+
+
+
+
+library(FactoMineR)
+library(explor)
+
+
+res.mca <- MCA(SNP_long2, quanti.sup = c(15,14,6:11), quali.sup = c(1,5))
+
+explor(res.mca)
+
+
+
+
+
+res_reg <- glm(data = SNP_long2, Grosseur ~ maigre_00_gros_01_gros11:GT + gros_00_maigre_01_maigre11:GT, binomial(link = 'logit'))
+
+summary(res_reg)
