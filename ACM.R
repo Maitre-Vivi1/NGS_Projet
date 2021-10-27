@@ -1,6 +1,6 @@
 # Libraries ---------------------------------------------------------------
 
-
+library(dplyr)
 # données -----------------------------------------------------------------
 
 # 5 13 7 10 fat
@@ -56,6 +56,11 @@ SNP_Pass$freq_gros_11 <- ((SNP_Pass$F5_alt_ref_gt == "1/1") + (SNP_Pass$F7_alt_r
                               (SNP_Pass$F10_alt_ref_gt == "1/1") + (SNP_Pass$F13_alt_ref_gt == "1/1"))/4
 
 
+
+
+
+selection_candidats <- SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$freq_maigre_01 + SNP_Pass$freq_maigre_11 ==1) |
+                                         (SNP_Pass$freq_maigre_00 == 1 & SNP_Pass$freq_gros_01 + SNP_Pass$freq_gros_11 ==1)),]
 
 View(SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$freq_maigre_01 + SNP_Pass$freq_maigre_11 ==1) |
                      (SNP_Pass$freq_gros_01 == 1 & SNP_Pass$freq_maigre_11 + SNP_Pass$freq_maigre_00 ==1) |
@@ -152,7 +157,15 @@ res_reg <- glm(data = SNP_long2, Grosseur ~ gros_00_maigre_01_maigre11 +
 
 summary(res_reg)
 
+head(selection_candidats)
 
 chisq.test(SNP_long2$Grosseur, SNP_long2$gros_00_maigre_01_maigre11)
 chisq.test(SNP_long2$Grosseur, SNP_long2$maigre_00_gros_01_gros11)
 
+dim(selection_candidats[selection_candidats$freq_gros_01 < 0.5,])
+row.names(selection_candidats[selection_candidats$freq_maigre_01 < 0.5,])
+row.names(selection_candidats)
+
+selection_VEP <- c("510", "846", "964", "988", "989","1080","1114","1124","1128","1874")
+
+Reduce(intersect, list(row.names(selection_candidats), selection_VEP))
