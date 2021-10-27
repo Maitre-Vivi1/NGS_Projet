@@ -8,7 +8,7 @@ library(readr)
 # 5 13 7 10 fat
 # 6 8  9 11 lean
 
-SNP_Pass <- read_delim("VCF/output_gGVCF_sV_VF_SNP_PASS_PID_VariantToTable.table", 
+SNP_Pass <- read_delim("VCF/output_gGVCF_sV_VF_SNP_FAKE_PASS_PID_VariantToTable.table", 
                                                              "\t", escape_double = FALSE, trim_ws = TRUE)
 
 

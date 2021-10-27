@@ -57,13 +57,16 @@ SNP_Pass$freq_gros_11 <- ((SNP_Pass$F5_alt_ref_gt == "1/1") + (SNP_Pass$F7_alt_r
 
 
 
-<<<<<<< HEAD
 
 
 selection_candidats <- SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$freq_maigre_01 + SNP_Pass$freq_maigre_11 ==1) |
                                          (SNP_Pass$freq_maigre_00 == 1 & SNP_Pass$freq_gros_01 + SNP_Pass$freq_gros_11 ==1)),]
 
-=======
+
+View(SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$freq_maigre_01 + SNP_Pass$freq_maigre_11 ==1 & SNP_Pass$freq_maigre_11 > 0.25) |
+                                         (SNP_Pass$freq_maigre_00 == 1 & SNP_Pass$freq_gros_01 + SNP_Pass$freq_gros_11 ==1 & SNP_Pass$freq_gros_11 > 0.25)),])
+
+
 View(SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$freq_maigre_01 + SNP_Pass$freq_maigre_11 ==1) |
                      (SNP_Pass$freq_gros_01 == 1 & SNP_Pass$freq_maigre_11 + SNP_Pass$freq_maigre_00 ==1) |
                      (SNP_Pass$freq_gros_11 == 1 & SNP_Pass$freq_maigre_00 + SNP_Pass$freq_maigre_01 ==1) |
@@ -74,7 +77,7 @@ View(SNP_Pass[which( (SNP_Pass$freq_gros_00 == 1 & SNP_Pass$freq_maigre_01 + SNP
                        
                        ),])
 
-SNP_Pass <- SNP_Pass[,-c(11,12,16,17,6,7,21,22,26,27,31,32,36,41,42,37)]
+SNP_Pass <- SNP_Pass[,-c(11,16,6,21,26,31,40,36)]
 
 
 # 5,6,7,8,9,10,11,13
@@ -120,7 +123,6 @@ res_reg <- glm(data = SNP_long, Grosseur ~ GT:Phase + freq_maigre_00 + freq_maig
                  maigre_00_gros_01_maigre_11 + alt_ref + alt_ref:Phase, binomial(link = 'logit'))
 
 summary(res_reg)
->>>>>>> becba6c02a918c21315a0cabe43e52ef57a17539
 
 head(selection_candidats)
 
@@ -129,4 +131,3 @@ row.names(selection_candidats[selection_candidats$freq_maigre_01 < 0.5,])
 row.names(selection_candidats)
 selection_VEP <- c("510", "846", "964", "988", "989","1080","1114","1124","1128","1874")
 
-Reduce(intersect, list(row.names(selection_candidats), selection_VEP))
