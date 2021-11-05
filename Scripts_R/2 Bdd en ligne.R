@@ -54,6 +54,10 @@ SNP_long<- data.frame(
   
 )
 
+for (i in levels(SNP_long$Pos)) {
+  SNP_long$DP[which(SNP_long$Pos == i)] <- mean(SNP_long$DP[which(SNP_long$Pos == i)])
+}
+
 SNP_long$Phase<- as.factor(SNP_long$Phase)
 levels(SNP_long$Phase) <- c(T,F)
 SNP_long <- SNP_long[order(SNP_long$Pos),]
@@ -61,3 +65,7 @@ SNP_long2 <- SNP_long[which(SNP_long$GT != "./."),]
 SNP_long2$Pos <- as.factor(as.character(SNP_long2$Pos))
 
 # -------------------------------------------------------------------------
+
+
+
+
