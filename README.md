@@ -2,4 +2,4 @@
 
 Groupe : William Dartois & Vivien Dupont
 
-Travail sur le 7ème chromosome parmi deux échantillons de poules (maigres et dodues) afin d'identifier des variants ou génomes responsables des différences graisseuses.
+Travail sur le chromosome 17 parmi deux échantillons de poules (maigres et dodues) afin d'identifier des variants ou gènes responsables d'un dérèglement du métabolisme des lipides. 
