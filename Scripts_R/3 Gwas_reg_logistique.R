@@ -1,7 +1,7 @@
 # Gwas --------------------------------------------------------------------
 
 # Une régression logistique par SNP (sauf pour les SNP où maigres et gros sont tous 1/1 ou 0/1)
-# 177 reg effectuées 
+# 487 reg effectuées 
 # la covariable est le fait d'étre 0/1 1/1 ou 0/0
 # On réalise un test globale sur cette variable (ligne Anova) pour se rendre compte de son effet
 # Plot des résultats dans un manhattant plot
@@ -36,8 +36,8 @@ plot(Posi, -log10(p_valvect)) # manhattant plot
 select_Gwas25 <- Posi[which(-log10(p_valvect) > 2.5)]
 select_Gwas2 <- Posi[which(-log10(p_valvect) > 2)]
 
-select_freq_qualite <- c(5432425, 5513019, 5514499, 5528011) # ce qu'on avait trouvé avant
+select_freq_qualite <- select # ce qu'on avait trouvé avant
 
 
-select_freq_qualite %in% select_Gwas25 # On en chope 2 sur 4 pour un seuil à 2.5
+select_freq_qualite %in% select_Gwas25 # On en chope 3 sur 4 pour un seuil à 2.5
 select_freq_qualite %in% select_Gwas2 # On les chope tous pour un seuil à 2.0 !!!!
