@@ -12,3 +12,4 @@ summary(as.factor(as.character(SNP_long3$Pos)))
 
 select <- names(summary(as.factor(as.character(SNP_long3$Pos))))
 select
+ 

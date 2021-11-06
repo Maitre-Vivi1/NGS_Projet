@@ -46,7 +46,7 @@ SNP_long<- data.frame(
   
   Pos = as.factor(rep(SNP_Pass$POS, 8)),
   
-  
+
   DP = as.numeric(c(as.character(SNP_Pass$F5_GTTTCG.DP), as.character(SNP_Pass$F6_GTCCGC.DP), as.character(SNP_Pass$F7_CCGTCC.DP),
                    as.character(SNP_Pass$F8_TGACCA.DP),
                    as.character(SNP_Pass$F9_GTGGCC.DP), as.character(SNP_Pass$F10_GTGAAA.DP), as.character(SNP_Pass$F11_ACAGTG.DP),
