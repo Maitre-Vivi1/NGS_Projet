@@ -55,7 +55,7 @@ SNP_long<- data.frame(
 )
 
 for (i in levels(SNP_long$Pos)) {
-  SNP_long$DP[which(SNP_long$Pos == i)] <- mean(SNP_long$DP[which(SNP_long$Pos == i)])
+  SNP_long$DP[which(SNP_long$Pos == i)] <- sum(SNP_long$DP[which(SNP_long$Pos == i)])
 }
 
 SNP_long$Phase<- as.factor(SNP_long$Phase)
