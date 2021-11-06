@@ -59,9 +59,9 @@ ggplot(data = df, aes(x = Posi, y = -log10(p_valvect))) +
   geom_point(data=df2, 
              aes(x=position,y=p_valeur, label = rep("oui",13)), 
              color='red') +
-  geom_label_repel(data = df2, aes(x = position, y = p_valeur, label = Name),
-                   box.padding   = 0.8, 
-                   point.padding = 0.8,
+  geom_text_repel(data = df2, aes(x = position, y = p_valeur, label = Name),
+                   box.padding   = 1, 
+                   point.padding = 0.9,
                    max.overlaps = Inf,
                    segment.color = 'red')
   
