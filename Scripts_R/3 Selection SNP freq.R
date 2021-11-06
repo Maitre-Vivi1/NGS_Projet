@@ -10,4 +10,5 @@ SNP_long3 <- SNP_long3[which(SNP_long3$maigre_00_gros_01_gros11 | SNP_long3$gros
 summary(as.factor(as.character(SNP_long3$Pos)))
 # 4 candidats
 
-select <- c(5432425, 5513019, 5514499, 5528011)
+select <- names(summary(as.factor(as.character(SNP_long3$Pos))))
+select

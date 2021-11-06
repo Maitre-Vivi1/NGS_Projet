@@ -33,11 +33,46 @@ Posi <- as.numeric(Posi)
 plot(Posi, -log10(p_valvect)) # manhattant plot
 
 
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+library(ggrepel)
+
+df = data.frame(
+  position = Posi,
+  p_valeur = -log10(p_valvect),
+  select_freq_qualite = Posi %in% select_freq_qualite,
+  Name = rep("",177)
+)
+
+df2 <- df %>% 
+  filter(select_freq_qualite)
+df2$Name <- c("FPGS", "CDK9", "CDK9", "CDK9", "CDK9", "Hors gène", "Hors gène", "SLC27A4", "SLC27A4", "SLC27A4", "ENSGALT00000007872",
+              "Hors gène", "Hors gène")
+
+
+ggplot(data = df, aes(x = Posi, y = -log10(p_valvect))) +
+  geom_point() +
+  xlab("Position sur le chromosome 17") +
+  ylab("p-valeur (en -log10)") +
+  ggtitle("Association pangénomique", subtitle = "parmi deux échantillons de poules (maigres et dodues)") +
+  geom_point(data=df2, 
+             aes(x=position,y=p_valeur, label = rep("oui",13)), 
+             color='red') +
+  geom_text_repel(data = df2, aes(x = position, y = p_valeur, label = Name),
+                   box.padding   = 1, 
+                   point.padding = 0.9,
+                   max.overlaps = Inf,
+                   segment.color = 'red')
+  
+  
+  
+  
 select_Gwas25 <- Posi[which(-log10(p_valvect) > 2.5)]
 select_Gwas2 <- Posi[which(-log10(p_valvect) > 2)]
 
-select_freq_qualite <- c(5432425, 5513019, 5514499, 5528011) # ce qu'on avait trouvé avant
+select_freq_qualite <- select # ce qu'on avait trouvé avant
 
 
-select_freq_qualite %in% select_Gwas25 # On en chope 2 sur 4 pour un seuil à 2.5
+select_freq_qualite %in% select_Gwas25 # On en chope 3 sur 12 pour un seuil à 2.5
 select_freq_qualite %in% select_Gwas2 # On les chope tous pour un seuil à 2.0 !!!!
